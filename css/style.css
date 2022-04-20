@@ -7,6 +7,7 @@ body{
     overflow-x: hidden; 
     scroll-behavior: smooth;
 }
+/* header */
 header{
     position: sticky;
     top: 0;
@@ -19,6 +20,12 @@ header{
     align-items: center;
     height: 5rem;
     margin-bottom: 3rem;
+}
+.main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 #logo{
     font-size: 27px;
@@ -34,7 +41,7 @@ a{
 }
 .list-item-link{
     padding-right: 2em;
-    font-size: 18pt;
+    font-size: 16pt;
     cursor: pointer;
     transition: color .5s;
 }
@@ -42,6 +49,7 @@ a{
     color: #c59d5f;
 }
 
+/* image gallery */
 .image-gallery{
     margin: auto;
     width: 50%;
@@ -60,4 +68,23 @@ a{
     position: absolute;
     bottom: 0;
     width: 100%;
+}
+
+/* table */
+table{
+    margin-top: 2rem;;
+    width: 90%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+table, th, td{
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+th{
+    background-color: #252525;
+    color: #fff;
+}
+td{
+    text-align: center;
 }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div id="logo"><a href="index.html">Cookies Stand</a></div>
+            <nav class="main-nav">
+                <ul class="list-items">
+                    <li class="list-item"><a href="about.html" class="list-item-link">About</a></li>
+                    <li class="list-item"><a href="sales.html" class="list-item-link">Sales</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="main-container">
+            <h1 class="main-header">
+                Stores Sales
+            </h1>
+            <form action="" id="myForm">
+                <legend>insert new store</legend>
+                <fieldset>
+                    <label for="branchName"> Branch name: </label><input type="text" id="branchName">
+                    <label for="maxCus"> Max customers: </label><input type="number" id="maxCus" min="0.0" step="0.1">
+                    <label for="minCus"> Min customers: </label><input type="number" id="minCus" min="0.0" step="0.1">
+                    <label for="avgCookies"> Avrage cookies: </label><input type="number" id="avgCookies" min="0.0" step="0.1">
+                    <button type="submit" id="submit">Add</button>
+                </fieldset>
+            </form>
+            <table id="table">
+                
+            </table>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="copy-rights">
+                <small>&copy;2022 Edraak</small>
+            </div>
+        </div>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>

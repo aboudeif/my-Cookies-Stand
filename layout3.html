@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Exercise 1</title>
+    <meta
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+      name="viewport"
+    />
+
+  <style>
+  .container{
+    /* Step 1: Set display to grid */
+      display:grid;
+   /* Step 2: setup rows amd columns */
+      grid-template-columns: 50px 50px 50px 250px 250px 250px;
+      grid-template-rows: 150px 700px 50px;
+      grid-template-areas: 
+      "hd hd hd hd hd hd hd hd"
+      "sd sd sd main main main main main"
+      "ft ft ft ft ft ft ft ft";
+      border: 2px solid yellow;
+  }
+  .box{
+    border: 1px solid red;
+    background: #F8FA9D;
+    }
+  .header{
+    grid-area:hd;
+  }
+  .footer{
+    grid-area:ft;
+  }
+  .sidebar{
+    grid-area:sd;
+  }
+  .content{
+    grid-area:main;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: minmax(000px,auto);
+  }
+  .item{
+    margin: 0;
+    background-color:#4444;
+}
+  </style>
+  </head>
+
+  <body>
+  <div class = "container">
+    <div class="header box">Header</div>
+    <div class="sidebar box">Sidebar</div>
+    <div class="content box">
+    <div class="item box">Item</div>
+    <div class="item box">Item</div>
+    <div class="item box">Item</div>
+    <div class="item box">Item</div>
+    <div class="item box">Item</div>
+    <div class="item box">Item</div>
+    <div class="item box">Item</div>
+    <div class="item box">Item</div>
+    <div class="item box">Item</div>
+    <div class="item box">Item</div>
+    <div class="item box">Item</div>
+    </div>
+    <div class="footer box">Footer</div>
+  </div>
+  </body>
+</html>

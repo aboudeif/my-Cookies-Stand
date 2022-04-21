@@ -1,12 +1,21 @@
 const table= document.getElementById('table');
 const addForm=document.getElementById('myForm');
+const charBox = document.getElementById('char-container')
 let hoursOfWork=['6am ','7am ','8am ','9am ','10am ','11am ','12am ','1pm ','2pm ','3pm ','4pm ','5pm ','6pm','7pm'];
 let stores= localStorage.getItem('sales') ? JSON.parse(localStorage.getItem('sales')):[];
 buildTableHeader();
-if(stores){
-    fillStores();
-    //console.log(JSON.parse(localStorage.getItem('sales')))
-}
+if(stores) fillStores();
+    const labels = hoursOfWork
+    let data = {
+    labels: labels,
+    datasets: [{
+      label: 'My First dataset',
+      backgroundColor: 'rgb(237, 37, 37)',
+      borderColor: 'rgb(237, 37, 37)',
+      data: [0, 10, 5, 2, 20, 30, 45],
+    }]
+  };
+
 
 // tableheader
 
@@ -54,6 +63,8 @@ function buildTableHeader(){
     let row = document.createElement('tr')
     let col = document.createElement('td')
     let total = 0
+    row.setAttribute('class','store')
+    row.setAttribute('data',stores.indexOf(store))
     col.textContent = store.name
     row.appendChild(col)
     for(let i = 0 ; i<store.cookiesPerHour.length;i++){
@@ -69,9 +80,7 @@ function buildTableHeader(){
     let button = document.createElement('button')
     button.textContent = 'delete'
     button.addEventListener('click',function(){
-        console.log(stores)
         stores.splice(stores.indexOf(store),1)
-        console.log(stores)
         localStorage.setItem('sales',JSON.stringify(stores))
         tbody.removeChild(row)
     })
@@ -79,17 +88,11 @@ function buildTableHeader(){
     row.appendChild(col)
     tbody.appendChild(row)
     table.appendChild(tbody)
+    showChart(row)
     }
-    
-    // const seatle = new storeSales('Seatle',65,23,6.3);
-    // const tokyo = new storeSales('Tokyo',24,3,1.2);
-    // const dubai = new storeSales('Dubi',38,11,3.7);
-    // const paris = new storeSales('Paris',38,20,2.3);
-    // const lima = new storeSales('lima',16,2,4.6);
-    
+
     function fillStores(){
         stores.forEach(store => {
-            //stores.push(store)
             render(store)
         });}
 
@@ -106,10 +109,43 @@ function buildTableHeader(){
         addForm.reset()
     })
 
-    let charBox = document.getElementById('char-container')
+   
     document.addEventListener("mousemove",function(e){
         let x = e.clientX
         let y = e.clientY
-        charBox.style.left = x + 5 + "px"
-        charBox.style.top = y + 5 + "px"
+        charBox.style.left = x + 20 + "px"
+        charBox.style.top = y + 40 + "px"
     })
+    
+    let tableRow = document.getElementsByClassName('store')
+
+    function showChart(element){
+    
+        element.addEventListener("mouseover",function(){
+            console.log(stores[element.getAttribute('data')].name)
+            console.log(data.datasets[0].label)
+            data.datasets[0].label = stores[element.getAttribute('data')].name
+            data.datasets[0].data =  stores[element.getAttribute('data')].cookiesPerHour.slice(0,14)
+              /* =================================================================================== */
+            document.getElementById('myChart').remove()
+            let canvas = document.createElement('canvas')
+            canvas.setAttribute('id','myChart')
+            charBox.appendChild(canvas)
+            let myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+            charBox.style.display = "block"
+    })
+    element.addEventListener("mouseout",function(){
+        charBox.style.display = "none"
+    })
+}
+   
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+
+  

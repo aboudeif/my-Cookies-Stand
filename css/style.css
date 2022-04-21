@@ -118,24 +118,21 @@ th{
 td{
     text-align: center;
 }
-tr{
-    z-index: 30;
-}
-#char-container{
-    width: 200px;
-    height: 200px;
-    position: absolute;
-    transition: 0.1s;
+.main-container:hover #char-container{
     display: none;
 }
-tr:hover #char-container{
-    display: block;
-    left: 50%;
-    top: 50%;
+
+#char-container{
+    width: 30%;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #252525;
+    box-shadow: 0 0 10px #252525;
+    color: #252525;
+    font-weight: bold;
+    display: none;
 }
-.main-container:hover #logo{
-    visibility: hidden;
-}
+
 tr:hover{
     background: #778b8b;
     color: #fff;

@@ -26,18 +26,43 @@
                 Stores Sales
             </h1>
             <form action="" id="myForm">
-                <legend>insert new store</legend>
+                <legend>Insert new store</legend>
                 <fieldset>
-                    <label for="branchName"> Branch name: </label><input type="text" id="branchName">
-                    <label for="maxCus"> Max customers: </label><input type="number" id="maxCus" min="0.0" step="0.1">
-                    <label for="minCus"> Min customers: </label><input type="number" id="minCus" min="0.0" step="0.1">
-                    <label for="avgCookies"> Avrage cookies: </label><input type="number" id="avgCookies" min="0.0" step="0.1">
+                    <span><label for="branchName"> Branch name: </label><input type="text" id="branchName"  list="branches"></span>
+                    <span><label for="maxCus"> Max customers: </label><input type="number" id="maxCus" min="0.0" step="0.1"></span>
+                    <span><label for="minCus"> Min customers: </label><input type="number" id="minCus" min="0.0" step="0.1"></span>
+                    <span><label for="avgCookies"> Avrage cookies: </label><input type="number" id="avgCookies" min="0.0" step="0.1"></span>
                     <button type="submit" id="submit">Add</button>
+                    <datalist id="branches">
+                        <option value="Alexandria"></option>
+                        <option value="Aswan"></option>
+                        <option value="Asyut"></option>
+                        <option value="Beheira"></option>
+                        <option value="Beni Suef"></option>
+                        <option value="Cairo"></option>
+                        <option value="Dakahlia"></option>
+                        <option value="Damietta"></option>
+                        <option value="Faiyum"></option>
+                        <option value="Gharbia"></option>
+                        <option value="Giza"></option>
+                        <option value="Ismailia"></option>
+                        <option value="Kafr El Sheikh"></option>
+                        <option value="Luxor"></option>
+                        <option value="Matruh"></option>
+                        <option value="Minya"></option>
+                        <option value="Monufia"></option>
+                        <option value="New Valley"></option>
+                        <option value="North Sinai"></option>
+                        <option value="Port Said"></option>
+                    </datalist>
                 </fieldset>
             </form>
             <table id="table">
                 
             </table>
+        </div>
+        <div id="char-container">
+            <canvas id="myChart"></canvas>
         </div>
     </main>
     <footer>
@@ -48,5 +73,31 @@
         </div>
     </footer>
     <script src="app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const labels = hoursOfWork;
+    const data = {
+        labels: labels,
+        datasets: [{
+          label: 'My First dataset',
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          data: [0, 10, 5, 2, 20, 30, 45],
+        }]
+      };
+    
+      const config = {
+        type: 'line',
+        data: data,
+        options: {}
+      };
+
+      const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+      );
+    </script>
 </body>
 </html>

@@ -21,6 +21,12 @@ function buildTableHeader(){
         col.textContent = hoursOfWork[i]
     row.appendChild(col)
     }
+    col = document.createElement('th')
+    col.textContent = 'total'
+    row.appendChild(col)
+    col = document.createElement('th')
+    col.textContent = 'action'
+    row.appendChild(col)
     thead.appendChild(row)
     table.appendChild(thead)
     }
@@ -47,17 +53,34 @@ function buildTableHeader(){
     let tbody= document.createElement('tbody')
     let row = document.createElement('tr')
     let col = document.createElement('td')
+    let total = 0
     col.textContent = store.name
     row.appendChild(col)
     for(let i = 0 ; i<store.cookiesPerHour.length;i++){
         col = document.createElement('td')
         col.textContent = store.cookiesPerHour[i]
+        total += store.cookiesPerHour[i]
     row.appendChild(col)
     }
+    col = document.createElement('td')
+    col.textContent = total
+    row.appendChild(col)
+    col = document.createElement('td')
+    let button = document.createElement('button')
+    button.textContent = 'delete'
+    button.addEventListener('click',function(){
+        console.log(stores)
+        stores.splice(stores.indexOf(store),1)
+        console.log(stores)
+        localStorage.setItem('sales',JSON.stringify(stores))
+        tbody.removeChild(row)
+    })
+    col.appendChild(button)
+    row.appendChild(col)
     tbody.appendChild(row)
     table.appendChild(tbody)
     }
-
+    
     // const seatle = new storeSales('Seatle',65,23,6.3);
     // const tokyo = new storeSales('Tokyo',24,3,1.2);
     // const dubai = new storeSales('Dubi',38,11,3.7);
@@ -66,10 +89,7 @@ function buildTableHeader(){
     
     function fillStores(){
         stores.forEach(store => {
-            // store = new storeSales(store.name, store.maxcus, store.mincus, store.avgsales)
-            // store.getHourlySales()
-            // console.log(store)
-            stores.push(store)
+            //stores.push(store)
             render(store)
         });}
 
@@ -82,7 +102,14 @@ function buildTableHeader(){
         const newStore = new  storeSales(name,max,min,avg)
         newStore.getHourlySales()
         render(newStore)
-        // stores.push(newStore)
         localStorage.setItem('sales',JSON.stringify(stores))
         addForm.reset()
+    })
+
+    let charBox = document.getElementById('char-container')
+    document.addEventListener("mousemove",function(e){
+        let x = e.clientX
+        let y = e.clientY
+        charBox.style.left = x + 5 + "px"
+        charBox.style.top = y + 5 + "px"
     })

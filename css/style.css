@@ -9,6 +9,7 @@ body{
     position: relative;
     height: 100%;
 }
+
 /* header */
 header{
     position: sticky;
@@ -29,6 +30,7 @@ header{
     justify-content: space-around;
     align-items: center;
 }
+
 #logo{
     font-size: 27px;
 }
@@ -38,8 +40,7 @@ a{
 }
 .list-items{
     display: flex;
-    justify-content: apace-between;
-    
+    justify-content: space-between;
 }
 .list-item-link{
     padding-right: 2em;
@@ -69,14 +70,40 @@ footer{
     justify-content: space-around;
     background-color: #252525;
     align-items: center;
-    
+}
+.main-header{
+    font-size: 18pt;
+    font-weight: bolder;
+}
+fieldset{
+    display: flex;
+    flex-wrap: wrap;
+}
+form > legend{
+    margin-top: 2em;
+    margin-bottom: 1em;
+    padding: 10px;
+    width: fit-content;
+    font-size: 14pt;
+    background-color: #777;
+    color: #fff;
+}
+label{
+    padding: 5px;
+    border: 1px solid transparent;
+}
+input{
+    padding: 5px;
+    margin-right: 5px;
+}
+#submit{
+    padding: 5px;
 }
 
 /* table */
 table{
     margin-top: 2rem;;
     width: 90%;
-    border-collapse: collapse;
     margin-bottom: 4rem;
     margin-top: 2rem;
 }
@@ -90,4 +117,27 @@ th{
 }
 td{
     text-align: center;
+}
+tr{
+    z-index: 30;
+}
+#char-container{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    transition: 0.1s;
+    display: none;
+}
+tr:hover #char-container{
+    display: block;
+    left: 50%;
+    top: 50%;
+}
+.main-container:hover #logo{
+    visibility: hidden;
+}
+tr:hover{
+    background: #778b8b;
+    color: #fff;
+    cursor: pointer;
 }
